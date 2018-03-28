@@ -29,7 +29,7 @@ estimate = response.json.get('prices')
 # print(json.dumps(estimate,sort_keys=True,indent=4, separators=(',', ': ')))
 
 # editing text files
-f = open("./results.txt", "a+")
+f = open("ride_service_surge_analytics/results.txt", "a+")
 
 for iterator in range(len(estimate)):
     f.write(str(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y-%m-%d %H:%M:%S")) + " " + estimate[iterator].get("display_name") + ', $' + str(estimate[iterator].get("low_estimate")) + ', $' + str(estimate[iterator].get("high_estimate")))
