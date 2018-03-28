@@ -6,6 +6,9 @@ from uber_rides.client import UberRidesClient
 import json
 
 # to import my own files that contain secrets (placed in gitignore)
+import datetime
+import pytz
+
 import tokens
 
 # authorizes into Uber API Service and begins session
@@ -23,7 +26,12 @@ response = client.get_price_estimates(
 estimate = response.json.get('prices')
 
 # some (temporary) printing to analyze API call returns
-print(json.dumps(estimate,sort_keys=True,indent=4, separators=(',', ': ')))
+# print(json.dumps(estimate,sort_keys=True,indent=4, separators=(',', ': ')))
+
+# editing text files
+f = open("./results.txt", "a+")
 
 for iterator in range(len(estimate)):
-    print(unicode(estimate[iterator].get("display_name")) + ', $' + unicode(estimate[iterator].get("low_estimate")) + ', $' + unicode(estimate[iterator].get("high_estimate")))
+    f.write(str(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y-%m-%d %H:%M:%S")) + " " + estimate[iterator].get("display_name") + ', $' + str(estimate[iterator].get("low_estimate")) + ', $' + str(estimate[iterator].get("high_estimate")))
+    f.write("\n")
+f.close()
