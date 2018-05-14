@@ -25,7 +25,7 @@ response = client.get_price_estimates(
 )
 price_estimate = response.json.get('prices')
 
-weather_response = urlopen("http://api.openweathermap.org/data/2.5/weather?q=" + tokens.weather_query + "&appid=" + tokens.weather_token)
+weather_response = urlopen("https://api.openweathermap.org/data/2.5/weather?q=" + tokens.weather_query + "&appid=" + tokens.weather_token)
 weather_data = json.load(weather_response)
 
 traffic_response = urlopen("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + tokens.origin_lat + "," + tokens.origin_long + "&destinations=" + tokens.destination_lat + "," + tokens.destination_long + "&departure_time=now&key=" + tokens.google_distance_matrix_token)
