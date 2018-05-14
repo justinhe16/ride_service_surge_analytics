@@ -32,10 +32,10 @@ traffic_response = urlopen("https://maps.googleapis.com/maps/api/distancematrix/
 traffic_data = json.load(traffic_response)
 
 # used for use on automated droplet
-# f = open("ride_service_surge_analytics/results.txt", "a+")
+f = open("ride_service_surge_analytics/results.txt", "a+")
 
 # used for use on local during testing
-f = open("results.txt", "a+")
+# f = open("results.txt", "a+")
 
 f.write(str(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y-%m-%d %H:%M:%S")))
 f.write("\n")
